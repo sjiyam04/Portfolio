@@ -1,0 +1,138 @@
+.project-grid {
+  padding: 80px 20px 120px;
+}
+
+.project-grid-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Filters */
+.project-filters {
+  margin-bottom: 50px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(10px);
+  padding: 10px;
+  border-radius: 999px;
+}
+
+.project-filters button {
+  padding: 10px 22px;
+  border: none;
+  background: transparent;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #1f2a44;
+}
+
+.project-filters .active {
+  background: white;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Cards grid */
+.project-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+/* Card */
+.project-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 22px;
+  padding: 18px;
+
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* Image */
+.card-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.card-image img {
+  width: 100%;
+  display: block;
+}
+
+/* Overlay */
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(4px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+.card-image:hover .image-overlay {
+  opacity: 1;
+}
+
+.image-overlay p {
+  color: white;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.image-overlay button {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: none;
+  background: white;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+/* Content */
+.card-content {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.card-content h4 {
+  font-size: 18px;
+  color: #1f2a44;
+}
+
+.card-content p {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #555;
+}
+
+.card-content span {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #777;
+}
+
+/* Button */
+.demo-btn {
+  margin-top: 16px;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 999px;
+  background: #1f2a44;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}

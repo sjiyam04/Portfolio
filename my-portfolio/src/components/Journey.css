@@ -1,0 +1,102 @@
+.journey {
+  padding: 120px 20px;
+}
+
+.journey-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Header */
+.journey-header span {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #777;
+}
+
+.journey-header h2 {
+  margin-top: 10px;
+  font-size: 48px;
+  color: #1f2a44;
+}
+
+.journey-header p {
+  margin-top: 12px;
+  max-width: 420px;
+  color: #555;
+}
+
+/* Timeline */
+.timeline {
+  margin-top: 80px;
+  position: relative;
+}
+
+/* Vertical line */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: #1f2a44;
+  opacity: 0.6;
+}
+
+/* Items */
+.timeline-item {
+  width: 50%;
+  padding: 20px 40px;
+  position: relative;
+}
+
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item.right {
+  left: 50%;
+  text-align: left;
+}
+
+/* Card */
+.timeline-card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 18px;
+  padding: 22px;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Card content */
+.timeline-card small {
+  font-size: 12px;
+  color: #777;
+}
+
+.timeline-card h4 {
+  margin-top: 8px;
+  font-size: 18px;
+  color: #1f2a44;
+}
+
+.timeline-card p {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Tag */
+.tag {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 4px 12px;
+  font-size: 12px;
+  border-radius: 999px;
+  background: rgba(31, 42, 68, 0.1);
+  color: #1f2a44;
+}

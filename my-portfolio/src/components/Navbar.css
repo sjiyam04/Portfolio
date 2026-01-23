@@ -1,0 +1,86 @@
+/* Wrapper */
+.navbar {
+  position: sticky;
+  top: 16px;
+  z-index: 100;
+
+  display: flex;
+  justify-content: center;
+}
+
+/* Glass pill */
+.navbar-container {
+  width: 100%;
+  max-width: 1100px;
+
+  padding: 10px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius: 999px;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+/* Logo */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-logo img {
+  height: 34px; /* 👈 reduced */
+  width: auto;
+  cursor: pointer;
+}
+
+/* Links */
+.navbar-links {
+  display: flex;
+  gap: 26px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: #1f2a44;
+  font-size: 14px; /* 👈 reduced */
+  font-weight: 500;
+}
+
+/* Button */
+.navbar-btn {
+  padding: 8px 18px; /* 👈 reduced */
+  border: none;
+  background: #212844;
+  color: white;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 10px 16px;
+  }
+
+  .navbar-links {
+    display: none; /* hide links on mobile */
+  }
+
+  .navbar-btn {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+
+  .navbar-logo img {
+    height: 30px;
+  }
+}
