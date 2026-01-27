@@ -12,4 +12,12 @@ export default defineConfig({
       '.onrender.com', // Allow all Render subdomains
     ],
   },
+  preview: {
+    host: '0.0.0.0',
+    port: parseInt(process.env.PORT) || 4173,
+    allowedHosts: [
+      'jiyashah.onrender.com',
+      '.onrender.com', // Allow all Render subdomains
+    ],
+  },
 })
