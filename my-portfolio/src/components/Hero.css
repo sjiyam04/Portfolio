@@ -1,28 +1,75 @@
 .hero {
   padding: 100px 20px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated background elements */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(31, 42, 68, 0.08), transparent);
+  border-radius: 50%;
+  animation: float 20s ease-in-out infinite;
+  z-index: 0;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  left: -15%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(31, 42, 68, 0.05), transparent);
+  border-radius: 50%;
+  animation: float 15s ease-in-out infinite reverse;
+  z-index: 0;
 }
 
 .hero-container {
   max-width: 1100px;
   margin: 0 auto;
-
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 60px;
+  position: relative;
+  z-index: 1;
 }
 
-/* TEXT */
+/* TEXT ANIMATIONS */
 .hero-text h1 {
   font-size: 64px;
   font-weight: 400;
   color: #4a4a4a;
   line-height: 1.1;
+  opacity: 0;
+  animation: slideInLeft 0.8s ease-out 0.2s forwards;
 }
 
 .hero-text h1 span {
   font-weight: 700;
   color: #1f2a44;
+  display: inline-block;
+  animation: highlightText 1s ease-out 1s;
+  position: relative;
+}
+
+/* Animated underline for name */
+.hero-text h1 span::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #1f2a44, rgba(31, 42, 68, 0.3));
+  animation: expandUnderline 0.8s ease-out 1.2s forwards;
 }
 
 .hero-text h3 {
@@ -30,6 +77,17 @@
   font-size: 24px;
   font-weight: 500;
   color: #555;
+  opacity: 0;
+  animation: slideInLeft 0.8s ease-out 0.4s forwards;
+  position: relative;
+}
+
+/* Typing cursor effect */
+.hero-text h3::after {
+  content: '|';
+  color: #1f2a44;
+  animation: blink 1s step-end infinite;
+  margin-left: 4px;
 }
 
 .hero-text p {
@@ -37,34 +95,219 @@
   max-width: 420px;
   color: #666;
   line-height: 1.6;
+  opacity: 0;
+  animation: slideInLeft 0.8s ease-out 0.6s forwards;
 }
 
 /* BUTTON */
 .hero-btn {
   margin-top: 30px;
-  padding: 12px 26px;
+  padding: 14px 32px;
   border: none;
   border-radius: 999px;
   background: #1f2a44;
   color: white;
-  font-size: 14px;
+  font-size: 15px;
+  font-weight: 500;
   cursor: pointer;
+  box-shadow: 0 8px 20px rgba(31, 42, 68, 0.3);
+  opacity: 0;
+  animation: slideInLeft 0.8s ease-out 0.8s forwards;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
 
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+/* Button ripple effect */
+.hero-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.hero-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(31, 42, 68, 0.4);
+}
+
+.hero-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(31, 42, 68, 0.4);
 }
 
 /* IMAGE */
 .hero-image {
   display: flex;
   justify-content: center;
+  opacity: 0;
+  animation: slideInRight 1s ease-out 0.4s forwards;
+  position: relative;
+}
+
+/* Animated decorative element behind image */
+.hero-image::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 380px;
+  height: 380px;
+  background: linear-gradient(135deg, rgba(31, 42, 68, 0.1), rgba(31, 42, 68, 0.05));
+  border-radius: 30px;
+  transform: translate(-50%, -50%) rotate(8deg);
+  z-index: -1;
+  animation: rotateBox 10s ease-in-out infinite;
 }
 
 .hero-image img {
   width: 360px;
   height: auto;
   border-radius: 24px;
-
   box-shadow:
-    12px 12px 0 rgba(0, 0, 0, 0.1),
+    12px 12px 0 rgba(31, 42, 68, 0.15),
     0 20px 40px rgba(0, 0, 0, 0.2);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: float 6s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-image img:hover {
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow:
+    16px 16px 0 rgba(31, 42, 68, 0.2),
+    0 25px 50px rgba(0, 0, 0, 0.25);
+}
+
+/* KEYFRAME ANIMATIONS */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes highlightText {
+  0% {
+    color: #4a4a4a;
+  }
+  50% {
+    color: #2d3e5f;
+  }
+  100% {
+    color: #1f2a44;
+  }
+}
+
+@keyframes expandUnderline {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes rotateBox {
+  0%, 100% {
+    transform: translate(-50%, -50%) rotate(8deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(-8deg);
+  }
+}
+
+/* RESPONSIVE */
+@media (max-width: 968px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 50px;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    font-size: 52px;
+  }
+
+  .hero-text p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-image::before {
+    width: 320px;
+    height: 320px;
+  }
+
+  .hero-image img {
+    width: 300px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 80px 20px 60px;
+  }
+
+  .hero-text h1 {
+    font-size: 42px;
+  }
+
+  .hero-text h3 {
+    font-size: 20px;
+  }
+
+  .hero-image img {
+    width: 260px;
+  }
+
+  .hero::before,
+  .hero::after {
+    display: none;
+  }
 }

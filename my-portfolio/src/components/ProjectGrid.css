@@ -1,83 +1,166 @@
 .project-grid {
   padding: 80px 20px 120px;
+  position: relative;
+  overflow: hidden;
 }
 
 .project-grid-container {
   max-width: 1100px;
   margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
-/* Filters */
-.project-filters {
-  margin-bottom: 50px;
-  display: flex;
-  gap: 20px;
-  justify-content: center;
+/* Scroll hint */
+.scroll-hint {
+  text-align: center;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 0.2s forwards;
+}
 
-  background: rgba(255, 255, 255, 0.4);
+.scroll-hint span {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #777;
+  letter-spacing: 1px;
+  padding: 10px 26px;
+  background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(10px);
-  padding: 10px;
-  border-radius: 999px;
+  border-radius: 50px;
+  border: 1px solid rgba(31, 42, 68, 0.1);
+  box-shadow: 0 4px 16px rgba(31, 42, 68, 0.08);
+  animation: float 3s ease-in-out infinite;
 }
 
-.project-filters button {
-  padding: 10px 22px;
-  border: none;
-  background: transparent;
-  border-radius: 999px;
-  cursor: pointer;
-  font-size: 14px;
-  color: #1f2a44;
+/* Cards wrapper with horizontal scroll */
+.project-cards-wrapper {
+  width: 100%;
+  padding: 20px 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  margin-left: -20px;
+  margin-right: -20px;
+  padding-left: 20px;
+  
+  /* Custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(31, 42, 68, 0.3) rgba(31, 42, 68, 0.05);
 }
 
-.project-filters .active {
-  background: white;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+.project-cards-wrapper::-webkit-scrollbar {
+  height: 8px;
 }
 
-/* Cards grid */
+.project-cards-wrapper::-webkit-scrollbar-track {
+  background: rgba(31, 42, 68, 0.05);
+  border-radius: 10px;
+  margin: 0 20px;
+}
+
+.project-cards-wrapper::-webkit-scrollbar-thumb {
+  background: rgba(31, 42, 68, 0.3);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.project-cards-wrapper::-webkit-scrollbar-thumb:hover {
+  background: rgba(31, 42, 68, 0.5);
+}
+
+/* Cards container */
 .project-cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
   gap: 30px;
+  padding-bottom: 20px;
+  padding-right: 20px;
+  width: max-content;
 }
 
-/* Card */
+/* Individual card */
 .project-card {
+  flex: 0 0 340px;
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(10px);
   border-radius: 22px;
   padding: 18px;
-
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  animation: slideInFromLeft 0.8s ease-out forwards;
 }
 
-/* Image */
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.2s; }
+.project-card:nth-child(3) { animation-delay: 0.3s; }
+.project-card:nth-child(4) { animation-delay: 0.4s; }
+.project-card:nth-child(5) { animation-delay: 0.5s; }
+.project-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Shimmer effect on card */
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.4), 
+    transparent
+  );
+  transition: left 0.7s ease;
+}
+
+.project-card:hover::before {
+  left: 100%;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Card image */
 .card-image {
   position: relative;
   overflow: hidden;
   border-radius: 16px;
+  aspect-ratio: 16/10;
 }
 
 .card-image img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Overlay */
+.project-card:hover .card-image img {
+  transform: scale(1.08);
+}
+
+/* Image overlay */
 .image-overlay {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(4px);
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  gap: 10px;
   opacity: 0;
-  transition: 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 
 .card-image:hover .image-overlay {
@@ -87,19 +170,39 @@
 .image-overlay p {
   color: white;
   font-size: 16px;
-  margin-bottom: 10px;
+  font-weight: 600;
+  transform: translateY(10px);
+  transition: transform 0.3s ease 0.1s;
+}
+
+.card-image:hover .image-overlay p {
+  transform: translateY(0);
 }
 
 .image-overlay button {
-  padding: 6px 14px;
+  padding: 8px 20px;
   border-radius: 999px;
   border: none;
   background: white;
+  color: #1f2a44;
   cursor: pointer;
   font-size: 12px;
+  font-weight: 600;
+  transform: translateY(10px);
+  transition: all 0.3s ease 0.15s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Content */
+.image-overlay button:hover {
+  transform: translateY(0) scale(1.05);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.card-image:hover .image-overlay button {
+  transform: translateY(0);
+}
+
+/* Card content */
 .card-content {
   margin-top: 16px;
   text-align: center;
@@ -107,23 +210,29 @@
 
 .card-content h4 {
   font-size: 18px;
+  font-weight: 600;
   color: #1f2a44;
+  margin-bottom: 6px;
+  transition: color 0.3s ease;
+}
+
+.project-card:hover .card-content h4 {
+  color: #2d3e5f;
 }
 
 .card-content p {
-  margin-top: 6px;
   font-size: 13px;
   color: #555;
+  margin-bottom: 6px;
 }
 
 .card-content span {
   display: block;
-  margin-top: 6px;
   font-size: 12px;
-  color: #777;
+  color: #666;
 }
 
-/* Button */
+/* Demo button */
 .demo-btn {
   margin-top: 16px;
   padding: 10px 22px;
@@ -133,6 +242,100 @@
   color: white;
   font-size: 13px;
   cursor: pointer;
-
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.demo-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.demo-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.demo-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+/* ANIMATIONS */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+  .project-card {
+    flex: 0 0 300px;
+  }
+
+  .scroll-hint span {
+    font-size: 12px;
+    padding: 8px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-grid {
+    padding: 60px 20px 100px;
+  }
+
+  .project-card {
+    flex: 0 0 280px;
+    padding: 16px;
+  }
+
+  .card-content h4 {
+    font-size: 16px;
+  }
+
+  .demo-btn {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+
+  .scroll-hint span {
+    font-size: 11px;
+    padding: 8px 18px;
+  }
 }
