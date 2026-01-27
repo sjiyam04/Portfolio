@@ -1,5 +1,5 @@
 import "./Projects.css"
-import projectImg from "./assets/images/project-1.png"
+import projectImg from "../assets/images/project-1.png"
 
 function Projects() {
   return (
