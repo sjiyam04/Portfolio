@@ -1,5 +1,5 @@
 import "./About.css"
-import aboutGraphic from "../assets/images/assets.png"
+import aboutGraphic from "./assets/images/assets.png"
 
 function About() {
   return (
