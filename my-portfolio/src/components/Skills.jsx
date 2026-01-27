@@ -1,20 +1,18 @@
 import "./Skills.css"
 
-import html from "../assets/icons/html5.svg"
-import css from "../assets/icons/css.svg"
-import js from "../assets/icons/javascript.svg"
-import react from "../assets/icons/react.svg"
+import html from "./assets/icons/html5.svg"
+import css from "./assets/icons/css.svg"
+import js from "./assets/icons/javascript.svg"
+import react from "./assets/icons/react.svg"
 
-import dotnet from "../assets/icons/dotnet.svg"
-import sql from "../assets/icons/postgresql.svg"
-import redis from "../assets/icons/redis.svg"
-import rabbitmq from "../assets/icons/rabbitmq.svg"
+import dotnet from "./assets/icons/dotnet.svg"
+import sql from "./assets/icons/postgresql.svg"
+import redis from "./assets/icons/redis.svg"
+import rabbitmq from "./assets/icons/rabbitmq.svg"
 
-import figma from "../assets/icons/figma.svg"
-// import xd from "../assets/icons/adobexd.svg"
-
-import git from "../assets/icons/git.svg"
-import github from "../assets/icons/github.svg"
+import figma from "./assets/icons/figma.svg"
+import git from "./assets/icons/git.svg"
+import github from "./assets/icons/github.svg"
 
 function Skills() {
   return (
