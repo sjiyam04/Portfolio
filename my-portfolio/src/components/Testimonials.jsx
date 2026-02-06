@@ -2,29 +2,32 @@ import { useState } from 'react';
 import './Testimonials.css';
 
 function Testimonials() {
-  const [activeTab, setActiveTab] = useState('testimonials');
+  const [activeTab, setActiveTab] = useState('experience');
 
-  const testimonialsData = [
+  const experienceData = [
     {
       id: 1,
-      icon: '💬',
-      name: 'Sarah Johnson',
-      role: 'CEO, TechStart Inc',
-      text: 'Working with Jiya was an absolute pleasure. Her attention to detail and creative approach brought our vision to life beyond expectations.'
+      icon: '💼',
+      role: 'Full stack Intern',
+      company: 'Casepoint, Surat',
+      duration: 'Sep 2025 - Jan 2026',
+      text: 'Worked on designing responsive web interfaces, wireframes, and interactive prototypes using Figma. Collaborated with developers to ensure seamless user experience.'
     },
     {
       id: 2,
-      icon: '⭐',
-      name: 'Michael Chen',
-      role: 'Product Manager, Digital Co',
-      text: 'Exceptional work! The website design and development were delivered on time with outstanding quality. Highly recommend!'
+      icon: '🎨',
+      role: 'Freelance Brand Designer',
+      company: 'Self-Employed',
+      duration: '2023 - Present',
+      text: 'Designed logo systems, brand identities, and social media creatives for small businesses. Focused on minimal and modern design aesthetics.'
     },
     {
       id: 3,
-      icon: '🎯',
-      name: 'Emma Williams',
-      role: 'Marketing Director, Brand Hub',
-      text: 'Jiya transformed our brand identity with her unique design perspective. The results exceeded all our expectations.'
+      icon: '🖥️',
+      role: 'Web Design Projects',
+      company: 'Academic & Personal Projects',
+      duration: 'Ongoing',
+      text: 'Developed and designed websites using modern UI principles. Worked on layout structuring, color systems, and user flow improvements.'
     }
   ];
 
@@ -32,24 +35,24 @@ function Testimonials() {
     {
       id: 1,
       icon: '🏆',
-      title: '20+ Projects Completed',
-      text: 'Successfully delivered over 20 web development and design projects for clients across various industries.'
+      title: '5+ Projects Completed',
+      text: 'Successfully delivered over 20 web development and design projects across various industries.'
     },
     {
       id: 2,
       icon: '🎨',
-      title: '10+ Brand Identities',
-      text: 'Created comprehensive branding solutions including logos, color schemes, and brand guidelines for diverse businesses.'
+      title: '5+ Brand Identities',
+      text: 'Created complete branding systems including logos, typography, and color palettes.'
     },
     {
       id: 3,
       icon: '📚',
       title: 'Continuous Learning',
-      text: 'Committed to staying updated with the latest technologies and design trends through ongoing education and practice.'
+      text: 'Actively improving skills in UI/UX, branding, and modern design systems.'
     }
   ];
 
-  const currentData = activeTab === 'testimonials' ? testimonialsData : achievementsData;
+  const currentData = activeTab === 'experience' ? experienceData : achievementsData;
 
   return (
     <section className="testimonials">
@@ -57,18 +60,18 @@ function Testimonials() {
 
         {/* Header */}
         <div className="testimonials-header">
-          <span>TESTIMONIALS & ACHIEVEMENTS</span>
-          <h2>What People Say & What I've Achieved</h2>
-          <p>A collection of feedback and milestones that shaped my journey</p>
+          <span>EXPERIENCE & ACHIEVEMENTS</span>
+          <h2>My Professional Journey</h2>
+          <p>A glimpse into my work experience and milestones</p>
         </div>
 
         {/* Tabs */}
         <div className="testimonial-tabs">
           <button 
-            className={activeTab === 'testimonials' ? 'active' : ''}
-            onClick={() => setActiveTab('testimonials')}
+            className={activeTab === 'experience' ? 'active' : ''}
+            onClick={() => setActiveTab('experience')}
           >
-            Testimonials
+            Experience
           </button>
           <button 
             className={activeTab === 'achievements' ? 'active' : ''}
@@ -84,15 +87,12 @@ function Testimonials() {
             <div className="testimonial-card" key={item.id}>
               <div className="icon">{item.icon}</div>
 
-              {activeTab === 'testimonials' ? (
+              {activeTab === 'experience' ? (
                 <>
-                  <div className="testimonial-content">
-                    <p className="testimonial-text">"{item.text}"</p>
-                  </div>
-                  <div className="testimonial-author">
-                    <h4>{item.name}</h4>
-                    <span className="role">{item.role}</span>
-                  </div>
+                  <h4>{item.role}</h4>
+                  <span className="role">{item.company}</span>
+                  <span className="duration">{item.duration}</span>
+                  <p>{item.text}</p>
                 </>
               ) : (
                 <>

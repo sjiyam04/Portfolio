@@ -20,14 +20,13 @@ function Projects() {
         {/* Featured Project */}
         <h4 className="featured-title">FEATURED PROJECTS</h4>
 
-        <div className="featured-card">
+        {/* <div className="featured-card">
           
-          {/* Image */}
+          
           <div className="featured-image">
             <img src={projectImg} alt="Project preview" />
           </div>
 
-          {/* Content */}
           <div className="featured-content">
             <h3>Skyvi International</h3>
             <p>
@@ -43,7 +42,7 @@ function Projects() {
             <button className="project-btn">Live Demo</button>
           </div>
 
-        </div>
+        </div> */}
       </div>
     </section>
   )
