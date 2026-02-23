@@ -51,13 +51,6 @@ function ProjectGrid() {
                 
                 <div className="card-image">
                   <img src={project.image} alt={project.title} />
-                  
-                  <div className="image-overlay">
-                    <p>{project.subtitle}</p>
-                    <a href={project.link} target="_blank" rel="noopener noreferrer">
-                      <button>View Project</button>
-                    </a>
-                  </div>
                 </div>
 
                 <div className="card-content">
